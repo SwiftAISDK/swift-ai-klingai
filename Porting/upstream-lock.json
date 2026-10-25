@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "packages": [
+    {
+      "name": "@ai-sdk/klingai",
+      "reviewedVersion": "4.0.70",
+      "ledgerKind": "provider",
+      "evidence": "`AIProviders.klingAI`, `KlingAIVideoModel`, `KlingAIProviderTests.swift`, `MediaStatusRedirectUpstreamTests.swift`",
+      "reviewStatus": "imported-reviewed-with-gaps",
+      "archiveIntegrity": "sha512-JevvIXui1Kod++ddV5ml1Hbrcv28u1GmuMNCpqWzH8Oyh3OxsIuk/+OEQAzdjPzjBRNxLMKtGHRMQ1E7jAoX6w==",
+      "sourceRef": "npm:@ai-sdk/klingai@4.0.70",
+      "testRef": "682e2dd71456f14f9da33a1b983d1998c3a1184c",
+      "testRefRelationship": "inventory-snapshot-not-release-verified",
+      "contractFamilies": [],
+      "contractReview": "not-imported; inspect upstream declarations before extraction"
+    }
+  ]
+}
