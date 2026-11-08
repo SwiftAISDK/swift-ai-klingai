@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "package": "swift-ai-klingai",
-  "version": "1.1.0",
-  "releaseID": "weekly-upstream-20261101",
+  "version": "1.1.1",
+  "releaseID": "weekly-upstream-20261108",
   "source": {
-    "commit": "ea057797494ab9bb66df8c6bfd8edc10245b20e7",
-    "baseCommit": "ea057797494ab9bb66df8c6bfd8edc10245b20e7",
+    "commit": "8e233ff96fb809445aff9a5c06bb6149a24b94da",
+    "baseCommit": "8e233ff96fb809445aff9a5c06bb6149a24b94da",
     "workingTree": false,
-    "inputsSHA256": "b46f3e07b0a583d6fee81035987d74a06fc5c6109cbdf228144d1172d2c3676e"
+    "inputsSHA256": "987359720075cb67dd8bc45bdc049aee4c5d5a42b67a7eb148e697ce5d18bd77"
   },
   "dependencies": [
     {
@@ -17,27 +17,28 @@
   ],
   "changes": [
     {
-      "id": "weekly-upstream-20261101",
-      "notes": "Add native async throwing apiKeyProvider; resolve a fresh key immediately before every authenticated HTTP send/stream through the shared transport. Preserve static keys, custom header precedence, error/abort propagation, request builders and response parsers. Returned keys run through existing KlingAI token validation/JWT generation; static accessKey/secretKey and environment fallbacks are preserved. Reviewed upstream: @ai-sdk/klingai 4.0.70 to 4.0.74. Validation passed: node Scripts/test-packages.mjs (all 52 owning package suites and the compatibility facade); node Scripts/sdk.mjs generate --check; node --test Scripts/tests/*.test.cjs (27 passed); docs-site check and build (100 pages). Live provider calls were not run.",
-      "compatibility": "Minor release for additive native API; existing static settings and call sites remain compatible. Updated direct dependency minimums are recorded in the manifest. Existing documented JS/framework and native product gaps remain; version-delta review does not imply full parity or live-service testing. Explicit custom authentication skips an unused credential supplier, a deliberate native callback-order adaptation."
+      "id": "weekly-upstream-20261108",
+      "notes": "Reviewed request user-agent literal refresh only; native runtime policies and public API remain unchanged. Reviewed published upstream delta: @ai-sdk/klingai 4.0.74 to 4.0.79. Validation passed: node Scripts/test-packages.mjs (all 52 owning packages plus the complete local facade; 3,965 reported tests and 33 explicit live skips); node Scripts/sdk.mjs dev test; node Scripts/sdk.mjs generate --check; node --test Scripts/tests/*.test.cjs (27 passed); core/provider isolation and version resolution; 52 deterministic package exports, 106 catalog consumers and four additional exact retained-minimum graphs; docs-site install/check/build (100 pages); git diff --check. No paid live-service calls were run. The publication pipeline requires successful Swift 6.3.3 CI at the exact canonical source before publishing.",
+      "compatibility": "Patch release for behavior/header corrections without new required owning API. Existing call sites and exact old selectors are retained. Direct minimums change only for concrete API use or required inherited behavior. Version-delta review does not establish full-package parity or live-service acceptance."
     }
   ],
   "canonicalDirectory": "Packages/swift-ai-klingai",
   "upstream": [
     {
       "name": "@ai-sdk/klingai",
-      "reviewedVersion": "4.0.74",
+      "reviewedVersion": "4.0.79",
       "ledgerKind": "provider",
-      "evidence": "`AIProviders.klingAI`, `KlingAIVideoModel`, `KlingAIProviderTests.swift`, `MediaStatusRedirectUpstreamTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json",
+      "evidence": "`AIProviders.klingAI`, `KlingAIVideoModel`, `KlingAIProviderTests.swift`, `MediaStatusRedirectUpstreamTests.swift`; 2026-11-01 delta: Docs/WeeklyUpstreamAudit20261101.json; 2026-11-08 delta: Docs/WeeklyUpstreamAudit20261108.json",
       "reviewStatus": "imported-reviewed-with-gaps",
-      "archiveIntegrity": "sha512-G2iiJgQCLxBb6WfttYyG3Xq3en90xztt1HAWKU6VZUMuLZfgeT0jPkM+Sn2u0PkyOg7r+sKKxqSYip+1xsYjQA==",
-      "sourceRef": "npm:@ai-sdk/klingai@4.0.74",
-      "testRef": "9b603d36186b75e58d5479445a96c76f6e2d2700",
+      "archiveIntegrity": "sha512-vpfgln4cME3wf4ow61BiYp/69hd+GUQLgP/S9shCoM7OpNosh9lCQjvpIybHDDj5/ukBRYbit4Z/a7WmuzsaEQ==",
+      "sourceRef": "npm:@ai-sdk/klingai@4.0.79",
+      "testRef": "0f3a85f92d1ce06ccde01d662407ef83e097a712",
       "testRefRelationship": "matching-release",
       "contractFamilies": [
-        "ProviderV4"
+        "ProviderV4",
+        "VideoModelV4"
       ],
-      "contractReview": "2026-11-01: published declarations, source and exact matching-release changed tests reviewed; scoped dispositions and Swift translations are in Docs/WeeklyUpstreamAudit20261101.json. Existing broader product gaps remain; reviewed delta is not full-package parity."
+      "contractReview": "2026-11-08: published declarations/source and exact matching-release changed tests reviewed; native implementations, per-file dispositions and broader retained gaps are recorded in Docs/WeeklyUpstreamAudit20261108.json. Reviewed delta is not full-package or live-service parity."
     }
   ],
   "note": "Independent port. Imported test refs and contract review gaps retain their original status; export is not new upstream parity proof.",
@@ -56,7 +57,7 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-klingai/Porting/map.json",
-      "sha256": "f9719a3d992fb605b95eb7d297546419215f23f7799c4b2fb735c29e4f6331da"
+      "sha256": "e047db1f3392f3e11d9987287bfc17db85541e553f2dc6e614c7113ecc791aae"
     },
     {
       "canonicalPath": "Packages/swift-ai-klingai/README.md",
@@ -68,7 +69,7 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-klingai/Sources/SwiftAIKlingAI/KlingAIProvider.swift",
-      "sha256": "f748ece1da0a09f83e8eb256decd53d5002a616a0f35b83cc6945283f3507ccc"
+      "sha256": "1cb49db19ca982cfbdf165a0526e9954999af0e66271891fd7d50cb5fb793139"
     },
     {
       "canonicalPath": "Packages/swift-ai-klingai/Sources/SwiftAIKlingAI/KlingAIProviderSettings.swift",
@@ -80,7 +81,7 @@
     },
     {
       "canonicalPath": "Packages/swift-ai-klingai/Tests/SwiftAIKlingAITests/KlingAIProviderTests.swift",
-      "sha256": "1df8460640fc61d8f3e4c9541c5d56eedae9b1e594c0f400eb1cf4d91dc0c4f2"
+      "sha256": "5d16f88b10cfa97b3a5b76326d2e7116b7e28cd74cad4fa8a3f650477b027841"
     },
     {
       "canonicalPath": "Packages/swift-ai-klingai/Tests/SwiftAIKlingAITests/TestSupport.swift",
