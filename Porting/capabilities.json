@@ -2,6 +2,7 @@
   {
     "order": 33,
     "providerID": "klingai",
+    "displayName": "Kling AI",
     "upstreamPackage": "@ai-sdk/klingai",
     "factoryNames": [
       "AIProviders.klingAI"
@@ -11,6 +12,20 @@
     ],
     "files": false,
     "skills": false,
-    "notes": "KlingAI video models mirror upstream KlingAI 4.0.85: trimmed `KLINGAI_API_KEY` bearer auth or explicit/environment legacy access and secret keys with upstream precedence, custom base URL and headers, versioned user-agent suffix, `video`/`videoModel` aliases, text-to-video, image-to-video, reference-to-video multi-image, and motion-control endpoints, first/last `frameImages`, `inputReferences`, top-level `generateAudio` to `sound` mapping with provider-option override behavior, providerOptions.klingai schema and snake_case passthrough, polling, `video/mp4` media type, provider metadata, KlingAI error schema, and warnings for unsupported standard video options. ProviderV4 type names, ESM-only packaging, Node 22 engines, TypeScript option export split, optional JS headers config, and workflow serialization helpers are JS-only upstream concerns. Status polling now follows only validated redirects and never forwards credentials away from the configured origin. The 2026-10-23 pass: Polling and status resource IDs are encoded as one path segment, including reserved characters and standalone dots. The 2026-11-01 reviewed delta adds native per-request async credentials and current portable request/stream fixes where applicable; see WeeklyUpstreamAudit20261101 for exact package dispositions and retained gaps. The 2026-11-08 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261108; no full-package or live-service parity is implied. The 2026-11-14 reviewed delta and retained gaps are documented in WeeklyUpstreamAudit20261114; no full-package or live-service parity is implied. The 2026-11-15 delta and native/platform distinctions are recorded in WeeklyUpstreamAudit20261115; no full-package or live-service parity is implied."
+    "credentials": [
+      {
+        "env": "KLINGAI_API_KEY",
+        "description": "API key sent as a bearer token. Required unless passed in settings or a legacy key pair is used."
+      },
+      {
+        "env": "KLINGAI_ACCESS_KEY",
+        "description": "Legacy access key; used with KLINGAI_SECRET_KEY to sign a JWT when no API key is set."
+      },
+      {
+        "env": "KLINGAI_SECRET_KEY",
+        "description": "Legacy secret key paired with KLINGAI_ACCESS_KEY."
+      }
+    ],
+    "notes": "Kling video generation: text-to-video, image-to-video, multi-image reference video and motion control, selected by the model ID suffix. Jobs are polled until the MP4 URL is ready."
   }
 ]
